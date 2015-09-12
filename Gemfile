@@ -14,6 +14,7 @@ gem 'foundation-rails'
 
 group :development, :test do
   gem 'byebug'
+  gem 'rspec'
   gem 'web-console', '~> 2.0'
   gem 'spring'
 end
