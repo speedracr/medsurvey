@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150914205201) do
+ActiveRecord::Schema.define(version: 20150914211803) do
 
   create_table "cities", force: :cascade do |t|
     t.string   "name"
@@ -39,6 +39,32 @@ ActiveRecord::Schema.define(version: 20150914205201) do
   end
 
   add_index "hospitals", ["city_id"], name: "index_hospitals_on_city_id"
+
+  create_table "survey_choices", force: :cascade do |t|
+    t.integer  "survey_question_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+  end
+
+  add_index "survey_choices", ["survey_question_id"], name: "index_survey_choices_on_survey_question_id"
+
+  create_table "survey_questions", force: :cascade do |t|
+    t.integer  "survey_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "survey_questions", ["survey_id"], name: "index_survey_questions_on_survey_id"
+
+  create_table "survey_votes", force: :cascade do |t|
+    t.integer  "user_id"
+    t.string   "survey_choice"
+    t.string   "references"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
+
+  add_index "survey_votes", ["user_id"], name: "index_survey_votes_on_user_id"
 
   create_table "surveys", force: :cascade do |t|
     t.datetime "created_at", null: false
