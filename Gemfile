@@ -9,12 +9,12 @@ gem 'jquery-rails'
 gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
+gem 'sqlite3'
 gem 'foundation-rails'
 gem 'haml'
 gem 'passenger'
 
 group :development, :test do
-  gem 'sqlite3'
   gem 'byebug'
   gem 'pry'
   gem 'rspec'
