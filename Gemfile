@@ -13,6 +13,7 @@ gem 'sqlite3'
 gem 'foundation-rails'
 gem 'haml'
 gem 'passenger'
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug'
