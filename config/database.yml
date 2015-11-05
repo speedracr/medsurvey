@@ -4,10 +4,7 @@
 #   Ensure the SQLite 3 gem is defined in your Gemfile
 #   gem 'sqlite3'
 #
-default: &default
-
 development:
-  <<: *default
   adapter: sqlite3
   pool: 5
   timeout: 5000
@@ -17,13 +14,12 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  <<: *default
   database: db/test.sqlite3
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: <%= ENV['POSTGRESQL_DATABASE'] %>
+  database: <%= ENV["POSTGRESQL_DATABASE"] %>
   pool: 5
-  username: <%= ENV['POSTGRESQL_USER'] %>
-  password: <%= ENV['POSTGRESQL_PASSWORD'] %>
+  username: <%= ENV["POSTGRESQL_USER"] %>
+  password: <%= ENV["POSTGRESQL_PASSWORD"] %>
