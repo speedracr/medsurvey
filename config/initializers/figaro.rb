@@ -1,1 +1,1 @@
-Figaro.require_keys("secret_key_base")
+Figaro.require_keys("SECRET_KEY_BASE")
