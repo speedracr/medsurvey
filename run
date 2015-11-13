@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+source /etc/shell_env
+# set -x
+cd /mnt
+
+ssh-add -l
+
+
+while true ; do
+  sleep 5
+
+  mysqlshow -uroot -h127.0.0.1 | grep -v Wildcard | grep -o gapfish;
+  db_exists=$?
+
+  if [ $db_exists != 0 ]; then
+    ./bootstrap.sh
+  fi
+
+  set -x
+
+  mysqlshow -uroot -h127.0.0.1 | grep -v Wildcard | grep -o gapfish;
+  db_exists=$?
+
+  if [ $db_exists = 0 ]; then
+    bundler_cache=${BUNDLER_CACHE:-vendor/bundle}
+    bundle check --path=$bundler_cache || bundle install --path=$bundler_cache
+    bundle exec foreman start
+    # bundle exec rails server -b 0.0.0.0
+  fi
+done
+

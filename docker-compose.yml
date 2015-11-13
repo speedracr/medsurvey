@@ -1,0 +1,13 @@
+postgres:
+  image: postgres:latest
+
+web:
+  image: gewo/ruby:2.2.1
+  volumes:
+    - .:/mnt
+    - $HOME/.ssh:/root/.ssh
+  ports:
+    - 3000:3000
+  working_dir: /mnt
+  command:  bin/rails s -b 0.0.0.0
+
