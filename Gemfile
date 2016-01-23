@@ -15,6 +15,7 @@ gem 'simple_form'
 gem 'haml'
 gem 'passenger'
 gem 'figaro'
+gem 'devise'
 
 group :development, :test do
   gem 'byebug'
